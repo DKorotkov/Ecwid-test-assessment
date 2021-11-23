@@ -1,0 +1,17 @@
+.e-gallery__button {
+   padding: 0;
+   margin: 0;
+   border: 0;
+
+   background-color: var(--color-eg-active);
+   color: var(--color-eg-white);
+   padding: em(7, 16) em(10, 16);
+   cursor: pointer;
+
+   &:hover {
+      filter: brightness(0.7);
+   }
+   &:active {
+      filter: invert(100%);
+   }
+}

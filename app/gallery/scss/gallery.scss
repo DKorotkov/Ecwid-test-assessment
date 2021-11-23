@@ -1,0 +1,180 @@
+@import "functions";
+@import "variables";
+
+@import "blocks/button";
+@import "blocks/input";
+
+.e-gallery {
+   position: relative;
+   min-width: var(--minWidth-eg);
+   max-width: var(--maxWidth-eg);
+   box-sizing: border-box;
+   background-image: url("../img/emptyGallery2.png");
+   background-size: 50% 50%;
+   background-repeat: no-repeat;
+   background-position: bottom;
+   padding-bottom: 50%;
+
+   @media (max-width: $md0+px) {
+      padding-top: rem(10);
+      padding-left: rem(10);
+      padding-right: rem(10);
+   }
+   @media (min-width: $md1+px) {
+      padding-top: rem(20);
+      padding-left: rem(20);
+      padding-right: rem(20);
+   }
+   @media (min-width: $md2+px) {
+      padding-top: rem(30);
+      padding-left: rem(30);
+      padding-right: rem(30);
+      padding-bottom: rem(400);
+      background-size: rem(400) 50%;
+   }
+
+   &--active {
+      background-image: none;
+      @media (max-width: $md0+px) {
+         padding-bottom: rem(10);
+      }
+      @media (min-width: $md1+px) {
+         padding-bottom: rem(20);
+      }
+      @media (min-width: $md2+px) {
+         padding-bottom: rem(30);
+      }
+   }
+
+   &--drag-start::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: rem(3) dashed var(--color-eg-active);
+   }
+
+   &__controls {
+      display: flex;
+
+      @media (max-width: $md0+px) {
+         flex-direction: column;
+      }
+      @media (min-width: $md1+px) {
+         justify-content: center;
+      }
+   }
+
+   &__button-load {
+      @media (max-width: $md0+px) {
+         border-bottom-right-radius: var(--size-eg-round);
+         border-bottom-left-radius: var(--size-eg-round);
+      }
+      @media (min-width: $md1+px) {
+         border-top-right-radius: var(--size-eg-round);
+         border-bottom-right-radius: var(--size-eg-round);
+      }
+   }
+
+   &__input-load {
+      @media (min-width: $md1+px) {
+         width: rem(400);
+      }
+   }
+
+   &__imgs-list {
+      padding-top: rem(20);
+      @media (max-width: $md0+px) {
+         display: flex;
+         flex-direction: column;
+         gap: rem(10);
+      }
+      @media (min-width: $md1+px) {
+         display: flex;
+         flex-wrap: wrap;
+         gap: rem(10);
+      }
+   }
+
+   &__image {
+      // position: relative;
+
+      width: 100%;
+      height: auto;
+      max-height: 100vh;
+      object-fit: cover;
+      @media (min-width: $md1+px) {
+         height: rem(200);
+      }
+   }
+
+   &__image-loading {
+      @media (min-width: $md1+px) {
+         width: auto;
+         flex-basis: rem(200);
+      }
+   }
+
+   &__image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      flex-grow: 1;
+      overflow: hidden;
+      background: linear-gradient(to right, transparent 30%, var(--color-eg-white) 50%, transparent 70%),
+         var(--color-eg-gray);
+      background-size: 400%;
+      background-position-x: 100%;
+      border-radius: var(--size-eg-round);
+      animation: sheen 3s infinite;
+   }
+
+   &__image-control {
+      position: absolute;
+      // display: flex;
+      // justify-content: center;
+      width: 100%;
+      height: 30%;
+   }
+
+   &__image-control:hover &__image-btn-delete {
+      display: inline;
+   }
+
+   &__image-btn-delete {
+      border: 0;
+      padding: 0;
+      margin: 0;
+
+      display: none;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, var(--color-eg-active) 0%, transparent 100%);
+      color: var(--color-eg-white);
+      cursor: pointer;
+   }
+
+   &__image-btn-delete-icon {
+      fill: var(--color-eg-white);
+   }
+
+   &__hide {
+      position: absolute !important;
+      clip: rect(1px 1px 1px 1px);
+      clip: rect(1px, 1px, 1px, 1px);
+      padding: 0 !important;
+      border: 0 !important;
+      height: 1px !important;
+      width: 1px !important;
+      overflow: hidden;
+   }
+}
+
+@keyframes sheen {
+   100% {
+      background-position-x: 0%;
+   }
+}

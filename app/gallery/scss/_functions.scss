@@ -1,0 +1,9 @@
+@use "sass:math";
+
+@function em($pixels, $font_size) {
+   @return math.div($pixels, $font-size) + em;
+}
+
+@function rem($pixels) {
+   @return math.div($pixels, 16) + rem; //16 -  default font size
+}
