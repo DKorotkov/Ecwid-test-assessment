@@ -1,4 +1,4 @@
-import { Egallary } from "/gallery/gallery.min.js";
+import { Egallary } from "./gallery/gallery.min.js";
 
 (function () {
    "use strict";
